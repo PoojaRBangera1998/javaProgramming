@@ -1,0 +1,48 @@
+import java.io.FileNotFoundException;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Scanner;
+
+class Demo1 implements Runnable
+{
+	Demo1()
+	{
+	
+	}
+	public void read()
+	{
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter  the sentence");
+		String str=sc.nextLine();
+		FileOutputStream n=null;
+		try
+		{
+			n=new FileOutputStream("C:\\sample\\file.txt");
+			Thread.sleep(3000);
+			System.out.println("File Is Successfully created");
+		}
+		catch(FileNotFoundException f)
+		{
+			System.out.println("The Specificed path not available or operating system is not given");
+		}
+	}
+}
+
+class DriverThread3
+{
+	public static void main(String[] args)
+	{
+		Thread t1=new Thread(new Demo1());
+		//Demo6 t2=new Demo6();
+		System.out.println(t1.getName());
+		t1.start();
+
+		//System.out.println(t2.getName());
+		//t2.start();
+	}
+}
+
+
+
+
